@@ -1,0 +1,11 @@
+- name: Install git and curl
+  hosts: local_server
+  become: yes
+  gather_facts: yes
+  vars:
+    package_name: curl
+  tasks:
+    - name: install git and curl
+      apt:
+        name: "{{ package_name }}"
+        state: present

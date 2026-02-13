@@ -1,0 +1,12 @@
+- name: sleep server
+  hosts: all
+  become: yes
+  strategy: host_pinned
+  gather_facts: yes
+  tasks:
+    - name: sleep
+      command: sleep 5
+
+    - name: print
+      debug:
+        msg: "running task2" 

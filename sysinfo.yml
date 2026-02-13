@@ -1,0 +1,8 @@
+- name: system information
+  hosts: local_server
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: print msg
+      debug:
+        msg: "Hostname is  {{ ansible_hostname }}"

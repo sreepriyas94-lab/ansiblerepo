@@ -1,0 +1,16 @@
+- name: Find and delete log files
+  hosts: local_server
+  become: yes
+  tasks:
+    - name: find log files older 7 days
+      find:
+        path: /var/log/
+        patterns: "*.log"
+        age: 7d
+        recurse: yes
+      register: output
+
+    - name: delete 7days older log files
+      command: rm -rf "{{ item.path }}"
+      loop: "{{ output.files }}"
+      when: output.matched < 0

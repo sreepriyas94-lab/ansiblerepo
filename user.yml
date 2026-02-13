@@ -1,0 +1,8 @@
+- name: create user
+  hosts: local_server
+  become: yes
+  tasks:
+    - name: user creation
+      user:
+         name: sree
+         password: "{{ 'sree@123'  | password_hash('sha512') }}"

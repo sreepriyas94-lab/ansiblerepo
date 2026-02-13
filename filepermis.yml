@@ -1,0 +1,16 @@
+- name: file creation and permission
+  hosts: local_server
+  become: yes
+  tasks:
+    - name: create file
+      file:
+        path: /home/ubuntu/Downloads/Fileperm
+        state: touch
+        mode: '0744'
+        owner: sree
+
+    - name: content
+      copy:
+        dest: /home/ubuntu/Downloads/Fileperm
+        content: >
+          create file and give user permission
